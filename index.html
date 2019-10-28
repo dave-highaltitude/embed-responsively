@@ -162,30 +162,6 @@
 		$("#googlemapspreview").html( previewLabel + previewPrefix + escapediFrameURL + previewSuffix );
 
 	}
-
-	function createInstagramEmbed(){
-		var instagramURL = $("#instagram-url").val();
-		// No need to strip http now. Force embed to be https
-		var protocol = instagramURL.slice(0,5);
-		if (protocol == "https"){
-			var instagramID = instagramURL.substring(24);
-		} else {
-			protocol = "http";
-			var instagramID = instagramURL.substring(23);
-		}
-		
-		var last_character = instagramURL[instagramURL.length-1];
-		
-		if (last_character!="/") {
-			instagramURL = instagramURL + "/";
-		}
-		
-		var instagramEmbedURL = "<iframe src='https://instagram.com/p/"+instagramID+"embed/' frameborder='0' scrolling='no' allowtransparency='true'></iframe>";
-		$("#instagramembedCode").html( embedLabel + "<textarea rows='12' class='codebox'>" + embedSquarishContainerCSS + embedContainerDivOpen + instagramEmbedURL + embedContainerDivClose + "</textarea>");
-		$("#instagrampreview").html( previewLabel + previewPrefixSquarish + instagramEmbedURL + previewSuffix );
-		$("#squarish").css( "padding-bottom", "120%" );
-		
-	}
 		
 	function createGettyEmbed(){
 		var gettyURL = $("#getty-url").val();
@@ -223,6 +199,17 @@
 	}
 		
 	</script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151027123-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-151027123-1');
+	</script>
+
 	
   </head>
   <body>
@@ -256,7 +243,6 @@
 	              <li><a href="#vimeo" data-toggle="tab">Vimeo</a></li>
 	              <li><a href="#dailymotion" data-toggle="tab">Dailymotion</a></li>
 	              <li><a href="#googlemaps" data-toggle="tab">Google Maps</a></li>
-	              <li><a href="#instagram" data-toggle="tab">Instagram</a></li>
 	              <li><a href="#getty" data-toggle="tab">Getty Images</a></li>
 	              <li><a href="#iframe" data-toggle="tab">Generic iFrame</a></li>
 	              <li><a href="#more" data-toggle="tab">More</a></li>
@@ -372,28 +358,6 @@
   	  			  <div class="code" id="genericembedCode"></div>
 				  				
                 </div>
-
-                <div class="tab-pane fade well" id="instagram">
-					
-					<form>
-					  <fieldset>
-					    <label>Instagram Page URL:</label>
-						
-						<div class="input-group">
-						      <input type="text" id="instagram-url" class="form-control" value="https://instagram.com/p/dnQi4EGuZx/">
-						      <span class="input-group-btn">
-						        <button class="btn btn-primary" onclick="createInstagramEmbed();" type="button">Embed</button>
-						      </span>
-						    </div><!-- /input-group -->
-						
-					  </fieldset>
-					</form>
-         			  
-  	  			  <div id="instagrampreview"></div>
-				
-	  			  <div class="code" id="instagramembedCode"></div>
-  
-				</div>
 				
 				<!-- next -->
 				
@@ -431,6 +395,7 @@
 						<li><a target="_blank" href="https://scribd.com/">Scribd</a> (select 'Autosize')</li>
 						<li><a target="_blank" href="https://soundcloud.com/">SoundCloud</a></li>
 						<li><a target="_blank" href="https://twitter.com/">Twitter</a></li>
+						<li><a target="_blank" href="https://instagram.com/">Instagram</a></li>
 					</ul>
 				
 					<p>Know of more? New embed type giving you problems? Let me know and report any issues on <a  target="_blank" href="https://github.com/dave-highaltitude/embed-responsively/issues/new">GitHub</a>.</p>
